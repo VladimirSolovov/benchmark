@@ -1,6 +1,7 @@
 <?php
-$data = file_get_contents('tests/result.json');
+$data = file_get_contents('resultate/result.json');
 $json = json_decode($data);
+unset($data);
 $start = microtime(true);
 	$a = range(1000, 100000);
 	$b = range(80000, 120000);
@@ -15,6 +16,7 @@ $timeres2[] = round(microtime(true) - $start, 2);
 $start3 = microtime(true);
 	$a = range(2, 9000000);
 	$timeres3[] = round(microtime(true) - $start, 2);
-$record = array_merge($timeres, $timeres2, $timeres3);
-file_put_contents('tests/result.json', json_encode($record));
+$json[] = array_merge($timeres, $timeres2, $timeres3);
+file_put_contents('resultate/result.json', json_encode($json));
+unset($json);
 ?>

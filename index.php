@@ -2,10 +2,12 @@
 require_once ('src/jpgraph.php');
 require_once ('src/jpgraph_bar.php');
 require_once ('src/jpgraph_legend.inc.php');
-require_once ('tests/test.php');
-	$data1y=array(1.41,1.35,0.43,0.38);
-	$data2y=array(5.1,2.86,0.36,0.36);
-	$data3y=array(6.9,2.11,0.2,0.23);
+	//require_once ('test.php');
+$data = file_get_contents('resultate/result.json');
+$json = json_decode($data);
+	$data1y=array($json[0][0],$json[1][0],$json[2][0],$json[3][0]);
+	$data2y=array($json[0][1],$json[1][1],$json[2][1],$json[3][1]);
+	$data3y=array($json[0][2],$json[1][2],$json[2][2],$json[3][2]);
 	$graph = new Graph(900,600,'auto');
 	$graph->SetScale("textlin");
 	$theme_class=new UniversalTheme;
